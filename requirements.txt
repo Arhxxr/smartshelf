@@ -1,2 +1,6 @@
 streamlit
-openai
+pymongo
+python-dotenv
+requests
+g4f
+curl_cffi
