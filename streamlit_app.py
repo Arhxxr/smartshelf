@@ -19,4 +19,3 @@ diet_option = st.selectbox(
 if st.button("Get Recipe Modifications"):
     st.write("Processing your recipe...")
     # Send data to backend here
-gi
