@@ -1,6 +1,10 @@
+import os
 import requests
 import streamlit as st
+from dotenv import load_dotenv
 
+load_dotenv()
+api_key = os.getenv("API_KEY")
 # API URL of the backend (adjust the localhost/host URL)
 API_URL = "http://localhost:5000/modify-recipe"
 
