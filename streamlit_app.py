@@ -7,7 +7,7 @@ import streamlit as st
 load_dotenv()
 
 # Get API key
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("sk-5yY7QeM1nz54aj6Wcf_oXf5AWXaN7p-3X8_2Rl6vOHT3BlbkFJkiL3ebS9TJNQOcJ1JiMhhoRlaa3rxn7gr5rAhIWJUA")
 
 # Streamlit app code
 st.title("Shelf Smart")
