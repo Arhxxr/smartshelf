@@ -46,7 +46,7 @@ if st.button("Submit"):
         # Call the GPT model to get a response
         try:
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4o",
                 messages=[
                     {
                         "role": "user",
