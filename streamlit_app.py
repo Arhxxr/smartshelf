@@ -1,21 +1,31 @@
+import requests
 import streamlit as st
 
-# Title and description
+# API URL of the backend (adjust the localhost/host URL)
+API_URL = "http://localhost:5000/modify-recipe"
+
+# Input for recipe
 st.title("Shelf Smart")
-st.write("An AI-powered tool to help you modify your recipes for healthier and dietary-friendly alternatives.")
+recipe_input = st.text_area("Paste your recipe here:")
+diet_option = st.selectbox("Choose your dietary preferences:", ["None", "Vegan", "Gluten-free", "Low-carb", "Low-calorie"])
 
-# Input section for recipe
-st.header("Input Your Recipe")
-recipe_input = st.text_area("Paste your recipe here (ingredients and instructions):")
-
-# Dropdown for dietary preferences
-st.header("Select Dietary Preferences")
-diet_option = st.selectbox(
-    "Choose your dietary preferences:",
-    ("None", "Vegan", "Gluten-free", "Low-carb", "Low-calorie")
-)
-
-# Submit button
 if st.button("Get Recipe Modifications"):
-    st.write("Processing your recipe...")
-    # Send data to backend here
+    # Send request to backend
+    if recipe_input:
+        data = {
+            "recipe": recipe_input,
+            "diet": diet_option
+        }
+        response = requests.post(API_URL, json=data)
+        
+        if response.status_code == 200:
+            # Display the modified recipe and nutrition
+            modified_recipe = response.json()
+            st.write("Modified Recipe: ")
+            st.write(modified_recipe['substitutions'])
+            st.write("Nutritional Information: ")
+            st.write(modified_recipe['nutrition'])
+        else:
+            st.write("Error: Could not modify the recipe.")
+    else:
+        st.write("Please input a recipe.")
